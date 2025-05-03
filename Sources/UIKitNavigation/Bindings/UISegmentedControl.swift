@@ -1,5 +1,4 @@
 #if canImport(UIKit) && !os(watchOS)
-  import IssueReporting
   import UIKit
 
   @available(iOS 14, tvOS 14, *)
@@ -72,16 +71,6 @@
       set {
         guard let rawRepresentable = Self(rawValue: newValue)
         else {
-          reportIssue(
-            """
-            Raw-representable 'UIBinding<\(Self.self)>' attempted to write an invalid raw value \
-            ('\(newValue)').
-            """,
-            fileID: fileID.rawValue,
-            filePath: filePath.rawValue,
-            line: line,
-            column: column
-          )
           return
         }
         self = rawRepresentable

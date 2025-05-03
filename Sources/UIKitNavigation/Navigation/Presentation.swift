@@ -1,5 +1,4 @@
 #if canImport(UIKit) && !os(watchOS)
-  import IssueReporting
   @_spi(Internals) import SwiftNavigation
   import UIKit
   @_implementationOnly import UIKitNavigationShim
@@ -198,11 +197,6 @@
         guard
           let navigationController = self?.navigationController ?? self as? UINavigationController
         else {
-          reportIssue(
-            """
-            Can't present navigation item: "navigationController" is "nil".
-            """
-          )
           return
         }
         navigationController.pushViewController(
@@ -212,11 +206,6 @@
         guard
           let navigationController = self?.navigationController ?? self as? UINavigationController
         else {
-          reportIssue(
-            """
-            Can't dismiss navigation item: "navigationController" is "nil".
-            """
-          )
           return
         }
         navigationController.popFromViewController(

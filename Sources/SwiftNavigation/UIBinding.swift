@@ -1,5 +1,4 @@
 import ConcurrencyExtras
-import IssueReporting
 
 /// A property wrapper type that can read and write an observable value.
 ///
@@ -533,19 +532,6 @@ private final class _UIBindingWeakRoot<Root: AnyObject, Value>: _UIBinding, @unc
     get { root?[keyPath: keyPath] ?? value }
     set {
       if root == nil {
-        reportIssue(
-          """
-          Binding failed to write to '@Bindable var \(Root.self)':\(fileID):\(line) because it \
-          is 'nil'.
-
-          This usually happens because the bindable model is not strongly held and so is \
-          deallocated.
-          """,
-          fileID: fileID,
-          filePath: filePath,
-          line: line,
-          column: column
-        )
       }
       value = newValue
       root?[keyPath: keyPath] = value
@@ -732,19 +718,6 @@ private final class _UIBindingOptionalToBool<
     get { base.wrappedValue != nil }
     set {
       if newValue {
-        reportIssue(
-          """
-          Boolean presentation binding attempted to write 'true' to a generic 'UIBinding<Item?>' \
-          (i.e., 'UIBinding<\(Wrapped.self)?>').
-
-          This is not a valid thing to do, as there is no way to convert 'true' to a new instance \
-          of '\(Wrapped.self)'.
-          """,
-          fileID: fileID,
-          filePath: filePath,
-          line: line,
-          column: column
-        )
       } else {
         base.wrappedValue = nil
       }

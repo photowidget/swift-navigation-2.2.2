@@ -1,5 +1,4 @@
 #if swift(>=6) && canImport(UIKit) && !os(tvOS) && !os(watchOS)
-  import IssueReporting
   import UIKit
 
   @available(iOS 18, tvOS 18, visionOS 2, *)
@@ -20,17 +19,6 @@
         }
         guard let tab = tabs.first(where: { $0.identifier == identifier })
         else {
-          reportIssue(
-            """
-            Tab bar controller binding attempted to write an invalid identifier ('\(identifier)').
-
-            Valid identifiers: \(tabs.map(\.identifier))
-            """,
-            fileID: fileID,
-            filePath: filePath,
-            line: line,
-            column: column
-          )
           self.selectedTab = nil
           return
         }

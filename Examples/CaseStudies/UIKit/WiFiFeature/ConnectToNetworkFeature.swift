@@ -1,6 +1,5 @@
 import SwiftUI
 import UIKitNavigation
-import XCTestDynamicOverlay
 
 @Observable
 @MainActor

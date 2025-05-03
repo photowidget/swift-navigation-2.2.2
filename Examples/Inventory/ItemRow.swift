@@ -1,6 +1,5 @@
 import SwiftUI
 import SwiftUINavigation
-import XCTestDynamicOverlay
 
 @Observable
 class ItemRowModel: Identifiable {

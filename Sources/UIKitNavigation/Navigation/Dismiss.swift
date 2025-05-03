@@ -1,5 +1,4 @@
 #if canImport(UIKit) && !os(watchOS)
-  import IssueReporting
   import UIKit
 
   @available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
@@ -9,15 +8,6 @@
 
     public func callAsFunction() {
       guard let run else {
-        reportIssue(
-          """
-          A view controller requested dismissal, but couldn't be dismissed.
-
-          'UITraitCollection.dismiss()' must be called from an object that was presented using a \
-          binding, for example 'UIViewController.present(item:)', and \
-          'UIViewController.navigationDestination(item:)'.
-          """
-        )
         return
       }
       run(.current)

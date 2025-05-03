@@ -31,21 +31,20 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/apple/swift-collections", from: "1.0.0"),
     .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.0.0"),
-    .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "1.5.4"),
+    .package(url: "https://github.com/photowidget/swift-case-paths-1.5.4.git", branch: "release/1.5.4"),
     .package(url: "https://github.com/photowidget/swift-concurrency-extras-1.3.0", branch: "release/1.3.0"),
-    .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.3.2"),
-    .package(url: "https://github.com/pointfreeco/swift-perception", from: "1.3.4"),
-    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.2.2"),
+    .package(url: "https://github.com/photowidget/swift-custom-dump-1.3.2.git", branch: "release/1.3.2"),
+    .package(url: "https://github.com/photowidget/swift-perception-1.3.4.git", branch: "release/1.3.4"),
   ],
   targets: [
     .target(
       name: "SwiftNavigation",
       dependencies: [
-        .product(name: "CasePaths", package: "swift-case-paths"),
-        .product(name: "CustomDump", package: "swift-custom-dump"),
+        .product(name: "CasePaths", package: "swift-case-paths-1.5.4"),
+        .product(name: "CustomDump", package: "swift-custom-dump-1.3.2"),
         .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras-1.3.0"),
         .product(name: "OrderedCollections", package: "swift-collections"),
-        .product(name: "Perception", package: "swift-perception"),
+        .product(name: "Perception", package: "swift-perception-1.3.4"),
       ]
     ),
     .testTarget(
@@ -58,8 +57,7 @@ let package = Package(
       name: "SwiftUINavigation",
       dependencies: [
         "UIKitNavigation",
-        .product(name: "CasePaths", package: "swift-case-paths"),
-        .product(name: "IssueReporting", package: "xctest-dynamic-overlay"),
+        .product(name: "CasePaths", package: "swift-case-paths-1.5.4"),
       ]
     ),
     .testTarget(
